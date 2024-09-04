@@ -129,15 +129,15 @@ public double calculateGPA(int studentId) {
 }
 
 private double mapGradeToGPA(String grade) {
-    switch (grade) {
-        case "O": return 9.5; // Adjusted average for O grade
-        case "A": return 8.5; // Adjusted average for A grade
-        case "B": return 7.5; // Adjusted average for B grade
-        case "C": return 6.5; // Adjusted average for C grade
-        case "D": return 5.5; // Adjusted average for D grade
-        case "F": return 4.5; // Adjusted average for F grade
-        default: return 0.0; // In case of an unknown grade
-    }
+        return switch (grade) {
+            case "O" -> 10;
+            case "A" -> 9;
+            case "B" -> 8;
+            case "C" -> 7;
+            case "D" -> 6;
+            case "F" -> 5;
+            default -> 0.0;
+        }; // In case of an unknown grade
 }
 
 }

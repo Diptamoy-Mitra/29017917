@@ -1,10 +1,10 @@
 package com.schoolmanagement;
 
-import java.util.InputMismatchException;
 import com.schoolmanagement.model.*;
 import com.schoolmanagement.service.*;
 import java.util.List;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
@@ -15,7 +15,6 @@ public class Menu {
 
     public void displayMenu() {
         while (true) {
-            System.out.println();
             System.out.println("1. Student Management");
             System.out.println("2. Teacher Management");
             System.out.println("3. Course Management");
@@ -87,7 +86,22 @@ public class Menu {
         studentService.addStudent(student);
         System.out.println("Student added successfully!");
     }
-//Here i use custom exception to handle the exception
+
+//    private void viewStudent() {
+//        System.out.print("Enter student ID: ");
+//        int studentId = scanner.nextInt();
+//        Student student = studentService.getStudent(studentId);
+//        if (student != null) {
+//            System.out.println("Student ID: " + student.getStudentId());
+//            System.out.println("Name: " + student.getName());
+//            System.out.println("Date of Birth: " + student.getDateOfBirth());
+//            System.out.println("Address: " + student.getAddress());
+//            System.out.println("Email: " + student.getEmail());
+//        } else {
+//            System.out.println("Student not found.");
+//        }
+//    }
+    
     public void viewStudent() {
         try {
             System.out.print("Enter student ID: ");
@@ -105,12 +119,11 @@ public class Menu {
             }
         } catch (InvalidStudentIdException e) {      //Custom exception
             System.out.println(e.getMessage());
-        } catch (InputMismatchException e) {         // custom exception
+        } catch (InputMismatchException e) {         // cutom exception
             System.out.println("Invalid input. Please enter a numeric student ID.");
             scanner.next(); // clear the invalid input
         }
     }
-    
 
     private void updateStudent() {
         System.out.print("Enter student ID: ");
